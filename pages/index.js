@@ -1,10 +1,19 @@
-import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
+import { ApolloClient, InMemoryCache, gql } from '@apollo/client'
 
 export default function Home({ posts }) {
   console.log('POSTS', posts)
   return (
     <div>
       <h1>My Hashnode Articles</h1>
+
+      {posts.map((post) => {
+        return (
+          <div key={post._id}>
+            <h2>{post.title}</h2>
+            <a href={`https://chrisdevcode.hashnode.dev/${post.slug}`}>Read</a>
+          </div>
+        )
+      })}
     </div>
   )
 }
